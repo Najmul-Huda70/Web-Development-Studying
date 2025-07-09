@@ -1,4 +1,4 @@
-# CSS Framwork : Tailwind
+# CSS Framwork : [Tailwind](https://youtu.be/7lmoLxbUENM?si=863sCcSax9CUzDxG)
 
 ### resource 
 https://tailwindcss.com/
