@@ -33,7 +33,7 @@ bg-gradient-to-br	Top-left → Bottom-right
 
 bg-gradient-to-bl	Top-right → Bottom-left
 
-### [Common Flex Utilities in Tailwind](https://youtu.be/phWxA89Dy94?si=rlMCNI5VAYCn0qLt)
+###  [Common Flex Utilities in Tailwind](https://youtu.be/53kRTGGDYd8?si=IbdzDUWvfw2GjwKA)
 #### Class	What It Does
 flex	Sets display: flex
 
