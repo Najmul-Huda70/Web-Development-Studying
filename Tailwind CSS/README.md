@@ -33,6 +33,23 @@ bg-gradient-to-br	Top-left → Bottom-right
 
 bg-gradient-to-bl	Top-right → Bottom-left
 
+### Common Flex Utilities in Tailwind
+#### Class	What It Does
+flex	Sets display: flex
+
+flex-row	Row direction (default)
+
+flex-col	Column direction
+
+items-center	Align items vertically (cross-axis)
+
+justify-center	Align items horizontally (main axis)
+
+gap-x-4	Horizontal spacing between items
+
+flex-wrap	Allows items to wrap to new lines
+
+
 
 
 
