@@ -33,8 +33,8 @@ bg-gradient-to-br	Top-left → Bottom-right
 
 bg-gradient-to-bl	Top-right → Bottom-left
 
-### Common Flex Utilities in Tailwind
-#### Class	What It Does - https://youtu.be/phWxA89Dy94?si=rlMCNI5VAYCn0qLt
+### C[ommon Flex Utilities in Tailwind](https://youtu.be/phWxA89Dy94?si=rlMCNI5VAYCn0qLt)
+#### Class	What It Does
 flex	Sets display: flex
 
 flex-row	Row direction (default)
