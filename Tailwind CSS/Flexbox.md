@@ -16,6 +16,8 @@
 ### flex-col-reverse
 <img width="525" height="521" alt="image" src="https://github.com/user-attachments/assets/ac3a8671-d3c8-44e7-92cf-5ca82471d7ad" />
 
+## justify
+
 <img width="1366" height="397" alt="image" src="https://github.com/user-attachments/assets/b45929ec-71f5-4a30-8d31-42771aebec86" />
 
 ### justify-start
@@ -29,6 +31,17 @@
 
 ### justify-between
 <img width="346" height="273" alt="image" src="https://github.com/user-attachments/assets/1088f7a3-dc6d-4298-a810-75f058751ee6" />
+
+### justify-evenly
+<img width="348" height="265" alt="image" src="https://github.com/user-attachments/assets/d35aa0bb-1e5c-41ed-bc5c-a0481a6d170e" />
+
+### justify-around
+<img width="353" height="264" alt="image" src="https://github.com/user-attachments/assets/1bbd4245-d2ab-40d7-9885-e2fafd8d4544" />
+
+## align-items
+
+<img width="825" height="193" alt="image" src="https://github.com/user-attachments/assets/fdc7c682-aec9-440c-8410-7a9b99b31b06" />
+
 
 
 
