@@ -105,6 +105,8 @@
 
 ## [flex grow ](https://youtu.be/53kRTGGDYd8?t=347)
 <img width="829" height="206" alt="image" src="https://github.com/user-attachments/assets/077d346e-1d00-4c89-816b-f27f450c8e01" />
+
+
 ## [flex shrink](https://youtu.be/53kRTGGDYd8?t=386)
 
 ## [order](https://youtu.be/53kRTGGDYd8?t=419)
