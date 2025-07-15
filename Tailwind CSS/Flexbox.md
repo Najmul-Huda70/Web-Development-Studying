@@ -55,8 +55,23 @@
 ### items-baseline
 <img width="330" height="214" alt="image" src="https://github.com/user-attachments/assets/02a44674-0382-4f87-af4e-9c6bed306f61" />
 
-### flex-wrap
+## flex-wrap
 <img width="825" height="212" alt="image" src="https://github.com/user-attachments/assets/3abdc83b-22f3-4d3b-8957-edbbbc85a9e6" />
+
+### flex-wrap
+<img width="673" height="260" alt="image" src="https://github.com/user-attachments/assets/66a82bdd-d92e-424a-9899-b3a709af36c9" />
+<img width="350" height="244" alt="image" src="https://github.com/user-attachments/assets/7cbc5d29-337e-49c4-b11b-fef5660b5680" />
+
+### flex-wrap-reverse
+<img width="320" height="326" alt="image" src="https://github.com/user-attachments/assets/7da30877-3df2-4110-a731-a20130f4b36e" />
+
+## align-content
+<img width="827" height="244" alt="image" src="https://github.com/user-attachments/assets/0ee3e163-783c-4333-9bce-b4fce83feb79" />
+
+
+
+
+
 
 
 
