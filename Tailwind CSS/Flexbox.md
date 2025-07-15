@@ -72,16 +72,42 @@
 <img width="394" height="175" alt="image" src="https://github.com/user-attachments/assets/fe68c2be-cdc3-4731-96d2-5859a7af30b3" /> <img width="323" height="320" alt="image" src="https://github.com/user-attachments/assets/db11604a-4df4-4c7a-b6ec-925ad88de619" />
 
 
+### flex-wrap content-end
+<img width="317" height="332" alt="image" src="https://github.com/user-attachments/assets/c6280af2-7854-42b8-978b-07ff59db1e51" />
+
+### flex-wrap content-center
+<img width="320" height="318" alt="image" src="https://github.com/user-attachments/assets/615bad02-f209-4fd3-8203-be365a9f317b" />
+
+### flex-wrap content-between
+<img width="332" height="335" alt="image" src="https://github.com/user-attachments/assets/bd6b9ccb-8445-447d-92f8-a1a23649117f" />
+
+### flex-wrap content-evenly
+<img width="333" height="334" alt="image" src="https://github.com/user-attachments/assets/066a31d5-ae63-4fa9-8004-7bb97c4246fe" />
+
+### flex-wrap content-around
+<img width="335" height="320" alt="image" src="https://github.com/user-attachments/assets/26d21c76-3a95-43d3-a1d2-6953eec36768" />
+
+## gap
+<img width="832" height="160" alt="image" src="https://github.com/user-attachments/assets/e3c8986d-6a60-4445-85bb-ca9c7292ea5e" />
+
+### gap-7
+<img width="600" height="130" alt="image" src="https://github.com/user-attachments/assets/fd7c3df7-3053-4861-81e0-8f4e28d65d83" />
+
+## self
+
+<img width="819" height="188" alt="image" src="https://github.com/user-attachments/assets/f421f1ca-a52a-4897-a5b4-b3e281b82ac7" />
 
 
+### self-end
+<img width="1269" height="503" alt="image" src="https://github.com/user-attachments/assets/7d5caa1d-4e90-47f5-a37e-97ab1a0754c2" />
 
+### self-start , self-center
 
+## [flex grow ](https://youtu.be/53kRTGGDYd8?t=347)
+<img width="829" height="206" alt="image" src="https://github.com/user-attachments/assets/077d346e-1d00-4c89-816b-f27f450c8e01" />
+## [flex shrink](https://youtu.be/53kRTGGDYd8?t=386)
 
-
-
-
-
-
+## [order](https://youtu.be/53kRTGGDYd8?t=419)
 
 
 
