@@ -82,3 +82,60 @@ console.log(obj.toString); // "Hello" (overrides built-in toString)
 ### ❌ Limitation 4: No guaranteed key order (in older JS)
 
 Before ES6, key order in objects wasn’t guaranteed (now mostly predictable but not ideal).
+
+# 🌟 3. Map — The Better Alternative
+
+A Map is also a key–value collection, but more powerful and flexible.
+
+### ✅ Map Features:
+
+Keys can be any type (object, number, boolean, etc.)
+
+Keeps keys in insertion order
+
+Has a built-in size property
+
+Easier iteration (map.forEach, map.keys(), etc.)
+
+### 🧠 Example:
+```js
+const myMap = new Map();
+
+myMap.set("name", "Nafis");
+myMap.set(10, "Number Key");
+myMap.set(true, "Boolean Key");
+myMap.set({ id: 1 }, "Object Key");
+
+console.log(myMap.get("name")); // Nafis
+console.log(myMap.get(10));     // Number Key
+console.log(myMap.get(true));   // Boolean Key
+
+console.log(myMap.size);        // 4
+```
+
+### 🔁 Iterating through a Map
+```js
+myMap.forEach((value, key) => {
+  console.log(key, "=>", value);
+});
+```
+
+#### Or use for...of:
+```js
+for (let [key, value] of myMap) {
+  console.log(key, ":", value);
+}
+```
+
+### 🧹 Delete / Check / Clear
+```js
+myMap.delete(10);   // remove key 10
+console.log(myMap.has("name")); // true
+myMap.clear();      // removes everything
+```
+### 💡 When to Use:
+| Use Case                                                               | Choose |
+| ---------------------------------------------------------------------- | ------ |
+| Simple data with string keys                                           | Object |
+| Need any type as key, maintain order, or frequently add/remove entries | Map    |
+
