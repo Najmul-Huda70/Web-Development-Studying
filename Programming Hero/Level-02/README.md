@@ -161,8 +161,12 @@ console.log(uniqueNums); //Set(3) {1, 2, 3}
 ```
 ➤ Set → Array
 ```js
+let uniqueNums = new Set([1, 2, 2, 3, 3]);
+//let arr = Array.from(uniqueNums);
 let arrFromSet = [...uniqueNums];
 console.log(arrFromSet); // [1, 2, 3]
+
+console.log(arr);// [ 1, 2, 3 ]
 ```
 #### 🧠 5️⃣ Real Example — Remove Duplicates from an Array
 ```js
