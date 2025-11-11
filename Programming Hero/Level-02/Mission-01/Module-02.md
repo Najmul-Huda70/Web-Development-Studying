@@ -133,6 +133,12 @@ myMap.delete(10);   // remove key 10
 console.log(myMap.has("name")); // true
 myMap.clear();      // removes everything
 ```
+| Method          | Description                  | Returns  |
+| --------------- | ---------------------------- | -------- |
+| `map.entries()` | Returns `[key, value]` pairs | Iterator |
+| `map.keys()`    | Returns all keys             | Iterator |
+| `map.values()`  | Returns all values           | Iterator |
+
 ### 💡 When to Use:
 | Use Case                                                               | Choose |
 | ---------------------------------------------------------------------- | ------ |
