@@ -262,7 +262,6 @@ const topElectronicProduct = rawApiData
   .sort((a, b) => b.rating - a.rating)
   .slice(0, 3)
   .map((item) => ({ name: item.productName }));
-console.log(topElectronicProduct);
 ```
 ### filter: O(n)
 selects items, returns a new array.
