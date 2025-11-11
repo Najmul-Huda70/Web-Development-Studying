@@ -33,8 +33,8 @@ let fruits = ["apple", "banana", "cherry"];
 ```js
 console.log(fruits[0]); // "apple"
 console.log(fruits[2]); // "cherry"
-Indexes start from 0.
 ```
+Indexes start from 0.
 #### ✏️ Modify elements
 ```js
 fruits[1] = "mango"; // replaces banana
@@ -57,7 +57,7 @@ for (let fruit of fruits) {
 }
 ```
 Output:
-```nginx
+```css
 apple
 mango
 cherry
@@ -80,6 +80,13 @@ console.timeEnd("Map1");
 console.time("map2");
 const secondUserList = secondArray.map((number) => ({ userId: number }));
 console.timeEnd("map2");
+```
+Output: 
+```nginx
+firstArray:  5000
+secondArray:  10000
+Map1: 0.328ms
+map2: 2.179ms
 ```
 ### 1-9 Basic interactions of Set datastructure
 #### 🧮 2️⃣ What is a Set?
