@@ -1,5 +1,6 @@
 # Mission-01 
 ## Module-01
+### 1-8 Hands on experiment to understand Big-O notation of basic Array methods
 | Function            | Measures from        | Precision                   | Use case                 |
 | ------------------- | -------------------- | --------------------------- | ------------------------ |
 | `Date.now()`        | January 1, 1970      | milliseconds (less precise) | Current date/time        |
@@ -23,6 +24,44 @@ for (let i = 0; i < 100; i = i + 5) {
 }
 console.timeEnd("task");
 ```
+#### 🧱 1️⃣ What is an Array?
+An Array is an ordered list of values — like a collection where each item has a position (index).
+```js
+let fruits = ["apple", "banana", "cherry"];
+```
+#### 📘 Access elements
+```js
+console.log(fruits[0]); // "apple"
+console.log(fruits[2]); // "cherry"
+Indexes start from 0.
+```
+#### ✏️ Modify elements
+```js
+fruits[1] = "mango"; // replaces banana
+console.log(fruits); // ["apple", "mango", "cherry"]
+```
+#### ➕ Add elements
+```js
+fruits.push("orange"); // add at end
+console.log(fruits); // ["apple", "mango", "cherry", "orange"]
+```
+#### ➖ Remove elements
+```js
+fruits.pop(); // removes last item
+console.log(fruits); // ["apple", "mango", "cherry"]
+```
+#### 🔁 Loop through array
+```js
+for (let fruit of fruits) {
+  console.log(fruit);
+}
+```
+Output:
+```nginx
+apple
+mango
+cherry
+```
 ```js
 const firstArray = [];
 const secondArray = [];
@@ -41,3 +80,84 @@ console.timeEnd("Map1");
 console.time("map2");
 const secondUserList = secondArray.map((number) => ({ userId: number }));
 console.timeEnd("map2");
+```
+### 1-9 Basic interactions of Set datastructure
+#### 🧮 2️⃣ What is a Set?
+A Set is a special object that stores unique values — duplicates are automatically removed.
+
+Example:
+```js
+let numbers = new Set([1, 2, 3, 3, 2, 1]);
+console.log(numbers); // Set(3) {1, 2, 3}
+```
+See? Duplicates are gone!
+#### ➕ Add elements
+```js
+numbers.add(4);
+console.log(numbers); // Set(4) {1, 2, 3, 4}
+```
+#### ❌ Delete elements
+```js
+numbers.delete(2);
+console.log(numbers); // Set(3) {1, 3, 4}
+```
+#### 🔍 Check if value exists
+```js
+console.log(numbers.has(3)); // true
+console.log(numbers.has(5)); // false
+```
+#### 🧹 Clear all values
+```js
+numbers.clear();
+console.log(numbers.size); // 0
+```
+#### 🔁 Loop through a Set
+```js
+let setExample = new Set(["a", "b", "c"]);
+for (let item of setExample) {
+  console.log(item);
+}
+```
+Output:
+```css
+a
+b
+c
+```
+#### ⚖️ 3️⃣ Array vs Set — Comparison Table
+| Feature         | **Array**                                  | **Set**                     |
+| --------------- | ------------------------------------------ | --------------------------- |
+| Order           | Ordered (keeps index)                      | Ordered (insertion order)   |
+| Duplicates      | ✅ Allowed                                  | ❌ Not allowed               |
+| Access by index | ✅ Yes (`arr[1]`)                           | ❌ No (must loop or convert) |
+| Length          | `.length`                                  | `.size`                     |
+| Use case        | Store list with duplicates or index access | Store unique values         |
+
+
+#### 🔄 4️⃣ Convert between Array and Set
+➤ Array → Set (remove duplicates)
+```js
+let nums = [1, 2, 2, 3, 3];
+let uniqueNums = new Set(nums);
+console.log(uniqueNums); //Set(3) {1, 2, 3}
+```
+➤ Set → Array
+```js
+let arrFromSet = [...uniqueNums];
+console.log(arrFromSet); // [1, 2, 3]
+```
+#### 🧠 5️⃣ Real Example — Remove Duplicates from an Array
+```js
+let names = ["Alice", "Bob", "Alice", "Charlie", "Bob"];
+let uniqueNames = [...new Set(names)];
+console.log(uniqueNames); // ["Alice", "Bob", "Charlie"]
+```
+Simple and powerful!
+| Task              | Array Example          | Set Example                   |
+| ----------------- | ---------------------- | ----------------------------- |
+| Create            | `let arr = [1, 2, 3];` | `let s = new Set([1, 2, 3]);` |
+| Add               | `arr.push(4)`          | `s.add(4)`                    |
+| Remove            | `arr.pop()`            | `s.delete(4)`                 |
+| Check exists      | `arr.includes(2)`      | `s.has(2)`                    |
+| Length            | `arr.length`           | `s.size`                      |
+| Remove duplicates | `new Set(arr)`         | (already unique)              |
