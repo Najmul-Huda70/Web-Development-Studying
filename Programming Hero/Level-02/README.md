@@ -131,6 +131,17 @@ a
 b
 c
 ```
+#### 🔁 Loop through a Set - forEach()
+
+```js
+let mySet = new Set(["apple", "banana", "cherry"]);
+mySet.forEach((element) => console.log(element));
+```
+```nginx
+apple
+banana
+cherry
+```
 #### ⚖️ 3️⃣ Array vs Set — Comparison Table
 | Feature         | **Array**                                  | **Set**                     |
 | --------------- | ------------------------------------------ | --------------------------- |
