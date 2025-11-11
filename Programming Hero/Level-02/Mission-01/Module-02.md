@@ -280,17 +280,18 @@ orders items in-place (mutates that array) using comparator.
 .sort((a, b) => b.rating - a.rating)
 ```
 i) Sorts the filtered array in-place (important!) by rating descending.
+
 ii) The comparator returns:
 
-positive → a should come after b
+positive → a should come after b  → b than a
 
-negative → a should come before b
+negative → a should come before b  → a than b
 
 zero → equal order (ties)
 
-** b.rating - a.rating sorts highest ratings first. decreasing order
+** b.rating - a.rating = sorts highest ratings first  → decreasing order
 
-** a.rating - b.rating sorts lowest ratings first. Increasing order
+** a.rating - b.rating = sorts lowest ratings first  → Increasing order
 
 ### slice: O(k) (copying k items)
 copies a subarray (no mutation).
