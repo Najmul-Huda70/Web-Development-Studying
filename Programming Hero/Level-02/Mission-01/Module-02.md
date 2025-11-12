@@ -313,3 +313,148 @@ i) Transforms each element into a new object with shape { name: <productName> }.
 ii) Using parentheses ({ ... }) returns the object literal from the arrow function in one line.
 
 iii) .map returns a new array; original items are untouched.
+
+# 🧩 1️⃣ Sorting Numbers (Ascending)
+```js
+const numbers = [40, 100, 1, 5, 25, 10];
+numbers.sort((a, b) => a - b);
+console.log(numbers);
+```
+** .sort() by default sorts as strings, not numbers.
+
+-> So [40, 100, 1] → "100" comes before "40" lexicographically.
+
+** To sort numerically, you must provide a compare function:
+```js
+(a, b) => a - b
+```
+# Output:
+```js
+[1, 5, 10, 25, 40, 100]
+```
+# 🧩 2️⃣ Sorting Strings (Ascending)
+```js
+const fruits = ["Banana", "apple", "Cherry", "date"];
+fruits.sort((a, b) => a.localeCompare(b));
+console.log(fruits);
+```
+** localeCompare() compares two strings alphabetically, considering case and language rules.
+
+** "Banana".localeCompare("apple") → returns negative (so Banana comes before apple by ASCII, but localeCompare adjusts based on alphabet order).
+
+# ✅ Output:
+```js
+["apple", "Banana", "Cherry", "date"]
+```
+# 🧩 3️⃣ Sorting Numbers (Descending)
+```js
+const numbers = [40, 100, 1, 5, 25, 10];
+numbers.sort((a, b) => b - a);
+console.log(numbers);
+```
+(b - a) means largest first → smallest last.
+# ✅ Output:
+```js
+[100, 40, 25, 10, 5, 1]
+```
+# 🧩 4️⃣ Sorting Strings (Descending)
+```js
+const fruits = ["Banana", "apple", "Cherry", "date"];
+fruits.sort((a, b) => b.localeCompare(a));
+console.log(fruits);
+```
+So Z → A order (case-insensitive, locale-aware)
+# ✅ Output:
+```js
+["date", "Cherry", "Banana", "apple"]
+```
+# 🧩 5️⃣ Flattening Nested Arrays
+```js
+const arr = [1, 2, 3, [4, 5, [6, 7, [8, 9, [10, 11]]]]];
+const flatrArray = arr.flat(Infinity);
+console.log(flatrArray);
+```
+.flat(depth) removes nested arrays up to the given depth level.
+Example:
+
+.flat(1) → removes one level of nesting.
+
+.flat(2) → removes two levels.
+
+.flat(Infinity) → removes all levels (completely flattens).
+
+# ✅ Output:
+```js
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+```
+| Concept               | Method                               | Example                                 | Description         |
+| --------------------- | ------------------------------------ | --------------------------------------- | ------------------- |
+| Numeric ascending     | `sort((a, b) => a - b)`              | `[1, 5, 10, 25, 40, 100]`               | Small → big         |
+| Numeric descending    | `sort((a, b) => b - a)`              | `[100, 40, 25, 10, 5, 1]`               | Big → small         |
+| String ascending      | `sort((a, b) => a.localeCompare(b))` | `["apple", "Banana", "Cherry", "date"]` | A → Z               |
+| String descending     | `sort((a, b) => b.localeCompare(a))` | `["date", "Cherry", "Banana", "apple"]` | Z → A               |
+| Flatten nested arrays | `flat(Infinity)`                     | `[1,2,3,...]`                           | Removes all nesting |
+# combines array flattening (flat) with Set to remove duplicate tags
+a very common real-world JavaScript technique.
+```js
+const tagsFromPosts = [
+  ["javascript", "react", "css"],
+  ["node", "express"],
+  ["css", "html", "react"],
+];
+
+const filterTags = [...new Set(tagsFromPosts.flat())];
+console.log(filterTags);
+```
+# 🔍 Step 1 — Original Data
+
+tagsFromPosts is an array of arrays — each inner array represents tags from a single blog post.
+```js
+[
+  ["javascript", "react", "css"],
+  ["node", "express"],
+  ["css", "html", "react"]
+]
+```
+# 🔍 Step 2 — Flatten the Array
+
+You call .flat() with no argument, which defaults to depth = 1, removing one level of nesting.
+```js
+tagsFromPosts.flat()
+```
+
+## Output:
+```js
+["javascript", "react", "css", "node", "express", "css", "html", "react"]
+```
+
+Now you have one single array of all tags (but with duplicates).
+
+# 🔍 Step 3 — Remove Duplicates with Set
+
+new Set() stores unique values only.
+```js
+new Set(["javascript", "react", "css", "node", "express", "css", "html", "react"])
+```
+
+## Output (Set):
+```js
+Set(7) { "javascript", "react", "css", "node", "express", "html" }
+```
+
+# 🔍 Step 4 — Convert Set Back to Array
+
+You use the spread operator (...) inside [ ] to make a new array from that Set:
+```js
+[...new Set(tagsFromPosts.flat())]
+```
+
+## Final Output:
+```js
+["javascript", "react", "css", "node", "express", "html"]
+```
+| Concept        | Description                                     | Example                            |
+| -------------- | ----------------------------------------------- | ---------------------------------- |
+| `.flat()`      | Flattens nested arrays into one array           | `[1,[2,3]].flat() → [1,2,3]`       |
+| `new Set()`    | Keeps only unique values                        | `new Set([1,1,2]) → {1,2}`         |
+| `...` (spread) | Expands a Set or array into individual elements | `[...new Set(...)]` = unique array |
