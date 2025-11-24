@@ -606,3 +606,30 @@ start + 5 * step = 10
 ```css
 [0, 2, 4, 6, 8, 10]
 ```
+# 2-5 From Simple Totals to Powerful Aggregation (reduce)
+
+## Mental Model: reduce as compression
+
+Take many values ⇒ compress into one output.
+
+That output can be:
+
+✔ number
+
+✔ string
+
+✔ object
+
+✔ array
+
+✔ Set
+
+✔ Map
+
+✔ custom class
+
+✔ boolean
+
+✔ anything
+
+reduce is a universal aggregation tool.
