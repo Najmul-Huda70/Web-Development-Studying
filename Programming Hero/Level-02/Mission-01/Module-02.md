@@ -820,3 +820,149 @@ This lookup is O(1) time — constant time — very fast.
 | ------------ | ------------------------------------ | --------------- | ------- |
 | find         | postsArray.find(p => p.id==="p-101") | O(n)            | slower  |
 | lookup table | lookupTable["p-101"]                 | O(1)            | instant |
+
+# 2-7 Scenario Based Activity - Grouping Data
+```js
+//* Grouping and Aggregating Data
+
+// Scenario: Count every survey and group by response
+
+//? input
+const surveyResponses = ["A","C","B","A","B","B","C","A","B","D","A","C","B","A"];
+//TODO initiate empty object
+//TODO chech if the response already exist or not
+//TODO if if it exists then increament the count
+//TODO if not the initialize it with 1
+
+const count = surveyResponses.reduce((table, response) => {
+  // if (table[response]) {
+  //   table[response] = table[response] + 1;
+  // } else {
+  //   table[response] = 1;
+  // }
+  // one line
+  table[response] = (table[response] || 0) + 1;
+  return table;
+}, {});
+console.log(count);
+//? Output
+// { A: 5, C: 3, B: 5, D: 1 }
+```
+## 🧠 Problem We’re Solving
+
+We have survey answers like:
+```js
+["A","C","B","A","B","B","C","A","B","D","A","C","B","A"]
+```
+
+Goal:
+
+Count how many times each response appears
+
+Group them in an object
+
+Result should be:
+```js
+{ A: 5, C: 3, B: 5, D: 1 }
+```
+### 🧩 Approaches — Step by Step
+Step 1: Start with an empty object
+```js
+{}
+```
+This will act like a frequency table (lookup table).
+
+Step 2: Loop using reduce
+const count = surveyResponses.reduce((table, response) => {
+
+
+table → accumulator (the object we are building)
+
+response → current item (e.g., "A", "C", "B" etc.)
+
+initial value of table = {}
+
+Step 3: Check if a response already exists in table
+```js
+if (table[response]) {
+  table[response] = table[response] + 1;
+} else {
+  table[response] = 1;
+}
+```
+Meaning:
+
+If the letter already exists → increase by 1
+
+If not → set first count to 1
+
+Step 4: One-line version (using short-circuit)
+```js
+table[response] = (table[response] || 0) + 1;
+```
+How it works:
+
+table[response] || 0
+
+if table[response] already exists → use it
+
+if undefined → use 0 instead
+
+then +1
+
+Example:
+| response | table[response] | Result    |
+| -------- | --------------- | --------- |
+| "A"      | undefined       | 0 + 1 → 1 |
+| "A"      | 1               | 1 + 1 → 2 |
+| "A"      | 2               | 2 + 1 → 3 |
+
+Step 5: Always return the accumulator
+```js
+return table;
+```
+Step 6: Initial accumulator value
+```js
+}, {});
+//       ↑ empty object
+```
+
+We start from an empty object and fill it.
+
+Final result
+```js
+console.log(count);
+```
+
+Output:
+```css
+{ A: 5, C: 3, B: 5, D: 1 }
+```
+
+This means:
+
+A appeared 5 times
+
+B appeared 5 times
+
+C appeared 3 times
+
+D appeared 1 time
+
+#### ✔ Why we use reduce here?
+
+Because we are:
+
+Taking multiple data items (responses)
+
+Aggregating into one object
+
+Combining many values → one summarized result
+
+This is exactly what reduce is built for.
+#### 📌 Complexity
+| Operation            | Complexity   |
+| -------------------- | ------------ |
+| Using reduce         | O(n)         |
+| Checking object keys | O(1) average |
+| Total                | O(n)         |
