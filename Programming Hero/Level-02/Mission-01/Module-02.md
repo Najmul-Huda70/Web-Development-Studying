@@ -738,3 +738,85 @@ Example: finding min or max
 ```js
 const max = numbers.reduce((a, c) => c > a ? c : a);
 ```
+# 2-6 The Common Pattern - Normalizing using lookup table
+```js
+const postsArray = [
+  { id: "p-101", title: "Intro to SQL", author: "Alex" },
+  { id: "p-102", title: "Data Structures in JS", author: "Beth" },
+  { id: "p-103", title: "Understanding Reduce", author: "Chris" },
+  { id: "p-104", title: "CSS Grid Tricks", author: "Alex" },
+];
+```
+This is a list of objects, where each object has an id.
+
+But if you want to find "p-103", normally you must search through the array manually or do:
+```js
+postsArray.find((post) => post.id === "p-103");
+```
+This is O(n) — slow if the array is huge.
+## Convert the array into a lookup table (key–value object)
+```js
+const lookupTable = postsArray.reduce((table, post) => {
+  table[post.id] = post;
+  return table;
+}, {});
+```
+Let’s explain:
+```js
+reduce() initializes:
+table = {} (empty object)
+```
+Then it loops through each post.
+
+First iteration:
+```js
+post = { id: "p-101", title: "Intro to SQL", author: "Alex" }
+table["p-101"] = post;
+```
+table becomes:
+```js
+{
+  "p-101": { id: "p-101", title: "Intro to SQL", author: "Alex" },
+}
+```
+Second iteration:
+```js
+post = { id: "p-102", title: "Data Structures in JS", author: "Beth" }
+table["p-102"] = post;
+```
+table becomes:
+```js
+{
+  "p-101": { id: "p-101", title: "Intro to SQL", author: "Alex" },
+  "p-102": { id: "p-102", title: "Data Structures in JS", author: "Beth" },
+}
+```
+…and so on.
+
+Final result:
+```js
+{
+  "p-101": { "id": "p-101", "title": "Intro to SQL", "author": "Alex" },
+  "p-102": { "id": "p-102", "title": "Data Structures in JS", "author": "Beth" },
+  "p-103": { "id": "p-103", "title": "Understanding Reduce", "author": "Chris" },
+  "p-104": { "id": "p-104", "title": "CSS Grid Tricks", "author": "Alex" }
+}
+```
+Now we have an object indexed by ID.
+
+### Fast lookup by key
+```js
+const post = lookupTable["p-101"];
+console.log(post);
+```
+This instantly returns the object:
+```js
+{ id: "p-101", title: "Intro to SQL", author: "Alex" }
+```
+This lookup is O(1) time — constant time — very fast.
+
+### Why This Is Better Than find()
+| Method       | Example                              | Time Complexity | Speed   |
+| ------------ | ------------------------------------ | --------------- | ------- |
+| find         | postsArray.find(p => p.id==="p-101") | O(n)            | slower  |
+| lookup table | lookupTable["p-101"]                 | O(1)            | instant |
