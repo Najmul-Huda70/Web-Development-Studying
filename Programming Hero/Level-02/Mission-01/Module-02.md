@@ -873,8 +873,9 @@ Step 1: Start with an empty object
 This will act like a frequency table (lookup table).
 
 Step 2: Loop using reduce
+```js
 const count = surveyResponses.reduce((table, response) => {
-
+```
 
 table → accumulator (the object we are building)
 
