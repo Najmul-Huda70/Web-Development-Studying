@@ -967,3 +967,272 @@ This is exactly what reduce is built for.
 | Using reduce         | O(n)         |
 | Checking object keys | O(1) average |
 | Total                | O(n)         |
+# 2-8 Scenario Based Activity - Aggregating Data
+```js
+//* Grouping and Aggregating Data
+
+// Scenario: You have a flat array of sales data, and you need to group the sales by category,
+// calculating the total revenue and the number of items sold for each.
+
+const sales = [
+  { category: "Electronics", item: "Laptop", price: 1200, quantity: 1 },
+  { category: "Books", item: "JS Basics", price: 30, quantity: 2 },
+  { category: "Electronics", item: "Mouse", price: 25, quantity: 2 },
+  { category: "Home", item: "Chair", price: 150, quantity: 1 },
+  { category: "Books", item: "React Deep Dive", price: 50, quantity: 1 },
+  { category: "Electronics", item: "Keyboard", price: 80, quantity: 1 },
+];
+//TODO init empty obj
+//TODO init obj category
+//TODO calculate the revenue
+const totalSalesByCategory = sales.reduce((table, sale) => {
+  const { category, price, quantity } = sale;
+  if (!table[category]) {
+    table[category] = {
+      totalREvenue: 0,
+      itemCount: 0,
+    };
+  }
+  table[category].totalREvenue += price * quantity;
+  table[category].itemCount += quantity;
+  return table;
+}, {});
+console.log(totalSalesByCategory);
+//? Output
+// {
+//   Electronics: {
+//     totalRevenue: 1330,
+//     itemCount: 4,
+//   },
+//   Books: {
+//     totalRevenue: 110,
+//     itemCount: 3,
+//   },
+//   Home: {
+//     totalRevenue: 150,
+//     itemCount: 1,
+//   },
+// };
+```
+### 🧠 Scenario Overview
+
+We have sales records:
+```js
+{ category: "Electronics", item: "Laptop", price: 1200, quantity: 1 },
+```
+
+We want to group them by category, and compute for each category:
+
+✔ Total revenue (price × quantity)
+✔ Total number of items sold
+
+✔ What We Want to Produce
+```js
+{
+  Electronics: {
+    totalRevenue: 1330,
+    itemCount: 4
+  },
+  Books: {
+    totalRevenue: 110,
+    itemCount: 3
+  },
+  Home: {
+    totalRevenue: 150,
+    itemCount: 1
+  }
+}
+```
+### 🧩 Step-by-Step Explanation
+
+Your reduce function:
+```js
+const totalSalesByCategory = sales.reduce((table, sale) => {
+```
+
+table = accumulator object we are building
+
+sale = current record (item being processed)
+
+initially table = {}
+
+Step 1: Extract relevant values
+```js
+const { category, price, quantity } = sale;
+```
+
+This is object destructuring. Helpful for cleaner code.
+
+Example:
+
+sale.category → category
+sale.price → price
+sale.quantity → quantity
+
+Step 2: Initialize category if it doesn't exist
+```js
+if (!table[category]) {
+  table[category] = {
+    totalREvenue: 0,
+    itemCount: 0,
+  };
+}
+```
+Meaning:
+
+If we’re seeing this category for the first time → create its entry.
+
+For example:
+
+When first sale is Laptop:
+```js
+category = "Electronics"
+```
+
+Since table["Electronics"] doesn't exist yet:
+```js
+table["Electronics"] = {
+  totalREvenue: 0,
+  itemCount: 0
+};
+```
+Step 3: Update revenue
+```js
+table[category].totalREvenue += price * quantity;
+```
+
+Example:
+
+Laptop → price 1200 × quantity 1 = 1200
+
+Then Mouse → price 25 × quantity 2 = 50
+
+Then Keyboard → price 80 × quantity 1 = 80
+
+Total revenue:
+
+1200 + 50 + 80 = 1330
+
+Step 4: Update item count
+```js
+table[category].itemCount += quantity;
+```
+
+Electronics quantities:
+
+Laptop → 1
+Mouse → 2
+Keyboard → 1
+total = 4
+
+Step 5: Always return the accumulator
+return table;
+
+Step 6: Initial starting point
+```js
+}, {});
+// empty {}
+```
+
+We start aggregation from an empty object.
+
+🧮 Walkthrough Example
+First item:
+```js
+{ category: "Electronics", price: 1200, quantity: 1 }
+```
+
+table becomes:
+```js
+{
+  Electronics: { totalREvenue: 1200, itemCount: 1 }
+}
+```
+Second item:
+```js
+{ category: "Books", price: 30, quantity: 2 }
+```
+
+table becomes:
+```js
+{
+  Electronics: { totalREvenue: 1200, itemCount: 1 },
+  Books: { totalREvenue: 60, itemCount: 2 },
+}
+```
+Third item:
+
+Mouse
+```js
+{ category: "Electronics", price: 25, quantity: 2 }
+```
+
+Update:
+```js
+Electronics.totalREvenue += 50
+Electronics.itemCount += 2
+```
+
+Now:
+```js
+Electronics: { totalREvenue: 1250, itemCount: 3 }
+```
+Fourth item:
+
+Chair (Home)
+```js
+Home: { totalREvenue: 150, itemCount: 1 }
+```
+Fifth:
+
+React Deep Dive (Books)
+
+Add price×quantity:
+50 × 1 = 50 → totalRevenue: 60 + 50 = 110
+itemCount: 2 + 1 = 3
+
+Sixth:
+
+Keyboard
+
+80 × 1 = 80
+```js
+itemCount += 1
+```
+Electronics total:
+
+1200 + 50 + 80 = 1330
+```js
+itemCount = 4
+```
+✔ Final Output
+```js
+{
+  Electronics: { totalREvenue: 1330, itemCount: 4 },
+  Books: { totalREvenue: 110, itemCount: 3 },
+  Home: { totalREvenue: 150, itemCount: 1 },
+}
+```
+### 🎯 When should you use this technique?
+
+When you need to process a dataset and produce:
+
+category summaries
+
+sales breakdowns
+
+analytics dashboards
+
+database indexing
+
+table summarizing
+
+city → population totals
+
+language → user counts
+
+product → total sold
+
+event → total participants
+
+This pattern is extremely useful in real-world software development.
