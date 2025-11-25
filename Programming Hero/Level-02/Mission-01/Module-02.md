@@ -1237,7 +1237,7 @@ event → total participants
 
 This pattern is extremely useful in real-world software development.
 
-# Denormalizing Data — Client-Side Join
+# 2-9 Denormalizing Data — Client-Side Join
 ## 🧠 Problem Scenario
 
 We have two separate arrays:
