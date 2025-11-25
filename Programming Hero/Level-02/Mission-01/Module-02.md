@@ -1236,3 +1236,249 @@ product → total sold
 event → total participants
 
 This pattern is extremely useful in real-world software development.
+
+# Denormalizing Data — Client-Side Join
+## 🧠 Problem Scenario
+
+We have two separate arrays:
+```js
+Users
+[
+  { id: 101, name: "Alice" },
+  { id: 102, name: "Bob" },
+  { id: 103, name: "Charlie" },
+]
+```
+Posts
+```js
+[
+  { id: 1, userId: 102, title: "My first post" },
+  { id: 2, userId: 101, title: "React Hooks" },
+  { id: 3, userId: 101, title: "Data Structures" },
+  { id: 4, userId: 103, title: "CSS is fun" },
+  { id: 5, userId: 102, title: "Node.js streams" },
+]
+```
+
+We want:
+```js
+[
+  { id: 101, name: "Alice", posts: [ ... ] },
+  { id: 102, name: "Bob", posts: [ ... ] },
+  { id: 103, name: "Charlie", posts: [ ... ] },
+]
+```
+
+Meaning each user object contains their associated posts.
+
+### 🧩 Step 1 — Group posts by userId using reduce
+```js
+const postByUserID = posts.reduce((table, post) => {
+  const { userId } = post;
+  if (!table[userId]) {
+    table[userId] = [];
+  }
+  table[userId].push(post);
+  return table;
+}, {});
+```
+### 🔍 What this does:
+
+We are building an object:
+
+userId → list of posts
+
+
+Let’s simulate this manually:
+
+First post:
+```js
+{ id: 1, userId: 102 }
+```
+
+table becomes:
+```js
+{ 102: [ { id: 1, ... } ] }
+```
+Second post:
+```js
+{ id: 2, userId: 101 }
+```
+
+table:
+```js
+{
+  102: [ { id: 1 } ],
+  101: [ { id: 2 } ]
+}
+```
+Third post:
+```js
+{ id: 3, userId: 101 }
+```
+
+append to existing:
+```js
+{
+  102: [ { id: 1 } ],
+  101: [ { id: 2 }, { id: 3 } ]
+}
+```
+Fourth post:
+```js
+{ id: 4, userId: 103 }
+
+{
+  102: [...],
+  101: [...],
+  103: [ { id: 4 } ]
+}
+```
+Fifth post:
+```js
+{ id: 5, userId: 102 }
+
+{
+  102: [ { id: 1 }, { id: 5 } ],
+  101: [ { id: 2 }, { id: 3 } ],
+  103: [ { id: 4 } ]
+}
+```
+
+Final result:
+```js
+{
+  102: [1st, 5th post],
+  101: [2nd, 3rd post],
+  103: [4th post],
+}
+```
+### ⚡ Step 2 — Attach posts to each user
+```js
+const userWithPosts = users.map((user) => {
+  return {
+    ...user,
+    posts: postByUserID[user.id] || [],
+  };
+});
+```
+
+Meaning:
+
+We take each user,
+
+Spread (clone) all fields: id, name
+
+Add new property "posts" from lookup
+
+If user has no posts — we provide empty array [] to avoid errors.
+
+### 🔥 Complexity Analysis
+Creating postByUserID → reduce
+```js
+posts.reduce(...)
+```
+
+Runs through every post once:
+
+Time: O(n) where n = posts length
+
+Lookup insertion is O(1) average, because object keys.
+
+Using map over users
+```js
+users.map(...)
+```
+
+Runs for each user:
+
+Time: O(m) where m = number of users
+
+Attaching posts is a fast O(1) lookup.
+
+Final result
+```js
+[
+  {
+    id: 101,
+    name: 'Alice',
+    posts: [
+      { id: 2, userId: 101, title: 'React Hooks' },
+      { id: 3, userId: 101, title: 'Data Structures' }
+    ]
+  },
+  {
+    id: 102,
+    name: 'Bob',
+    posts: [
+      { id: 1, userId: 102, title: 'My first post' },
+      { id: 5, userId: 102, title: 'Node.js streams' }
+    ]
+  },
+  {
+    id: 103,
+    name: 'Charlie',
+    posts: [
+      { id: 4, userId: 103, title: 'CSS is fun' }
+    ]
+  }
+]
+```
+### 🧠 Key Concept: Client-Side JOIN
+
+In SQL this is like:
+```sql
+SELECT * FROM users
+LEFT JOIN posts
+ON users.id = posts.userId
+```
+
+But here we do it in JavaScript — on the client.
+
+### 🏆 Why This Is Good Practice
+
+✔ Reduces repeated searching (find or filter)
+
+✔ Makes accessing user posts O(1)
+
+✔ Highly scalable
+
+✔ Useful for data merging
+
+✔ Helps build API responses
+
+✔ Efficient for rendering UI lists
+
+### 🛠 Real-World Usage (IMPORTANT!)
+
+Used in:
+
+React state combining
+
+Normalized Redux stores
+
+GraphQL response caching
+
+Database relations
+
+Chat systems (user → messages)
+
+E-commerce (user → orders)
+
+Education apps (student → submissions)
+
+CMS (author → posts)
+
+### Summary
+
+You used:
+
+✔ reduce() → to group posts by user ID
+
+✔ map() → to merge users with their posts
+
+✔ Object lookup (table[user.id]) → O(1)
+
+✔ Spread (...user) → clone and extend object
+
+✔ Denormalization → flatten related data
