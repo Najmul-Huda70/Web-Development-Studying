@@ -1,6 +1,9 @@
 # [TypeScript Documentation](https://www.typescriptlang.org/docs/)
-# Install : Node.js + NVM + TypeScript
-## 1️⃣ What is NVM?
+
+<details>
+  <summary><h1>Install : Node.js + NVM + TypeScript</h1> </summary>
+
+  ## 1️⃣ What is NVM?
 
 NVM (Node Version Manager) allows you to install and manage multiple versions of Node.js on the same machine.
 
@@ -70,3 +73,158 @@ Created a new tsconfig.json
 ```bash
 tsc --init
 ```
+
+</details>
+
+<details>
+  <summary><h1>Lern TypeScript</h1></summary>
+  
+## What is TypeScript?
+
+TypeScript = JavaScript + Types
+
+Created by Microsoft
+
+Superset of JavaScript (all JS code is valid TS)
+
+Adds static typing
+
+Converts (compiles) to JavaScript
+
+Why use TypeScript?
+
+✔ Fewer bugs
+
+✔ Better code readability
+
+✔ Excellent for large projects
+
+✔ Required/used in React, Next.js, Node.js jobs
+
+## TypeScript vs JavaScript
+
+| JavaScript                  | TypeScript             |
+| --------------------------- | ---------------------- |
+| Dynamic typing              | Static typing          |
+| Errors at runtime           | Errors at compile time |
+| Hard to maintain large apps | Easy to maintain       |
+| No type safety              | Type safety            |
+
+### Compile TS → JS
+terminal run
+```css
+tsc fileName.ts
+```
+### Code Run
+```ts
+node fileName.js
+```
+## Primitive Types
+TypeScript primitive types:
+
+| Type        | Description                        | Example                             |
+| ----------- | ---------------------------------- | ----------------------------------- |
+| `string`    | Text / character data              | `let name: string = "Najmul";`      |
+| `number`    | All numbers (int, float, negative) | `let age: number = 22;`             |
+| `boolean`   | Logical true / false               | `let isValid: boolean = true;`      |
+| `null`      | Intentional empty value            | `let data: null = null;`            |
+| `undefined` | Value not assigned yet             | `let value: undefined = undefined;` |
+| `symbol`    | Unique identifier                  | `let id: symbol = Symbol("id");`    |
+| `bigint`    | Very large numbers                 | `let big: bigint = 123456789n;`     |
+
+🔍 Special Usage (Important)
+
+| Scenario       | Example                            |
+| -------------- | ---------------------------------- |
+| Nullable value | `let user: string \| null = null;` |
+| Optional value | `let token: string \| undefined;`  |
+| Type inference | `let count = 10; // number`        |
+
+⚖️ null vs undefined
+
+| null                | undefined        |
+| ------------------- | ---------------- |
+| Intentionally empty | Not assigned     |
+| Manual              | Automatic        |
+| API returns empty   | Variable missing |
+
+Example:
+
+```ts
+let username: string = "Najmul";
+let age: number = 22;
+let isStudent: boolean = true;
+```
+Array
+```ts
+let numbers: number[] = [1, 2, 3];
+let names: string[] = ["Ali", "Rahim"];
+```
+Any (avoid if possible)
+```ts
+let data: any = 10;
+data = "Hello";
+```
+
+## Functions in TypeScript
+```ts
+function greet(name: string): string {
+  return "Hello " + name;
+}
+
+console.log(greet("Najmul"));
+```
+
+Arrow function:
+```ts
+const sum = (a: number, b: number): number => a + b;
+```
+## Objects & Type Alias
+```ts
+type User = {
+  name: string;
+  age: number;
+  isAdmin: boolean;
+};
+
+const user: User = {
+  name: "Najmul",
+  age: 22,
+  isAdmin: false
+};
+```
+
+## Interface (Very Important for React)
+```ts
+interface Person {
+  name: string;
+  age: number;
+}
+
+const p1: Person = {
+  name: "Huda",
+  age: 23
+};
+```
+9️⃣ Union Types
+```ts
+let id: number | string;
+
+id = 101;
+id = "ABC101";
+```
+## TypeScript Config (tsconfig.json)
+
+Create:
+```ts
+tsc --init
+```
+
+Important options:
+```ts
+{
+  "strict": true,
+  "target": "ES6"
+}
+```
+</details>
