@@ -163,6 +163,9 @@ let username: string = "Najmul";
 let age: number = 22;
 let isStudent: boolean = true;
 ```
+
+# Nonprimitive types
+
 Array
 ```ts
 let numbers: number[] = [1, 2, 3];
@@ -187,7 +190,6 @@ Arrow function:
 ```ts
 const sum = (a: number, b: number): number => a + b;
 ```
-# Nonprimitive types
 
 ## Objects & Type Alias
 ```ts
