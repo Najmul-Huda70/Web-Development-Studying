@@ -82,6 +82,22 @@ then code run
 ```ts
 node ./src/fileName.ts
 ```
+### Compile TS → JS
+terminal run
+```css
+tsc fileName.ts
+```
+### Code Run
+```ts
+node fileName.js
+```
+Important options:
+```ts
+{
+  "strict": true,
+  "target": "ES6"
+}
+```
 </details>
 
 <details>
@@ -118,15 +134,6 @@ Why use TypeScript?
 | Hard to maintain large apps | Easy to maintain       |
 | No type safety              | Type safety            |
 
-### Compile TS → JS
-terminal run
-```css
-tsc fileName.ts
-```
-### Code Run
-```ts
-node fileName.js
-```
 ## Primitive Types
 TypeScript primitive types:
 
@@ -332,6 +339,8 @@ add(...nums);
 | Use case | Function params | Copy / merge      |
 | Output   | Array           | Individual values |
 
+## Union & Intersection Types in TypeScript
+
 9️⃣ Union Types
 ```ts
 let id: number | string;
@@ -339,18 +348,137 @@ let id: number | string;
 id = 101;
 id = "ABC101";
 ```
-## TypeScript Config (tsconfig.json)
-
-Create:
 ```ts
-tsc --init
+// union |
+
+type UserRole = "admin" | "user";
+
+const getDashboard = (role: UserRole) => {
+  if (role === "admin") {
+    return "Admin Dashboard";
+  } else if (role === "user") {
+    return "User dashboard";
+  } else {
+    return "guest dashboard";
+  }
+};
+
+getDashboard("guest");
+
+// intersection &
+
+type Employee = {
+  id: string;
+  name: string;
+  phoneNo: string;
+};
+
+type Manager = {
+  designation: string;
+  teamSize: number;
+};
+
+type EmployeeManager = Employee & Manager;
+
+const ChowdhuryShaheb: EmployeeManager = {
+  id: "123",
+  name: "Chowdhury Shaheb",
+  phoneNo: "017",
+  designation: "manager",
+  teamSize: 20,
+};
+```
+## ternary, nullish coalescing & optional chaining
+| Operator | Symbol | Purpose           |
+| -------- | ------ | ----------------- |
+| Ternary  | `? :`  | Conditional logic |
+| Nullish  | `??`   | Default value     |
+| Optional | `?.`   | Safe access       |
+
+### 1️⃣ Ternary Operator (? :)
+
+👉 Short form of if-else
+
+Syntax
+```ts
+condition ? valueIfTrue : valueIfFalse;
+```
+Example
+```ts
+let age = 20;
+
+let result = age >= 18 ? "Adult" : "Minor";
+```
+Nested Ternary
+```ts
+let score = 85;
+
+let grade =
+  score >= 90 ? "A" :
+  score >= 80 ? "B" :
+  "C";
 ```
 
-Important options:
+✔ Use for simple conditions
+
+❌ Avoid for complex logic
+
+### 2️⃣ Nullish Coalescing (??)
+
+👉 Fallback only if value is null or undefined
+
+Syntax
 ```ts
-{
-  "strict": true,
-  "target": "ES6"
-}
+value ?? defaultValue
+```
+🔸 Example
+```ts
+let username: string | null = null;
+
+let displayName = username ?? "Guest";
+```
+❗ Difference with OR (||)
+```ts
+let count = 0;
+
+console.log(count || 10); // 10 ❌
+console.log(count ?? 10); // 0 ✅
+```
+Operator	Triggers when
+`	
+??	only null or undefined
+### 3️⃣ Optional Chaining (?.)
+
+👉 Safely access nested properties
+
+Syntax
+```ts
+obj?.property
+obj?.method()
+arr?.[index]
+```
+🔸 Example
+```ts
+type User = {
+  name: string;
+  address?: {
+    city: string;
+  };
+};
+
+const user: User = { name: "Najmul" };
+
+console.log(user.address?.city); // undefined
+```
+
+❌ Without optional chaining → runtime error
+
+🔸 Optional Chaining with Function
+```ts
+type Api = {
+  fetchData?: () => string;
+};
+
+api.fetchData?.();
 ```
 </details>
