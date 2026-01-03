@@ -187,6 +187,8 @@ Arrow function:
 ```ts
 const sum = (a: number, b: number): number => a + b;
 ```
+# Nonprimitive types
+
 ## Objects & Type Alias
 ```ts
 type User = {
@@ -214,6 +216,52 @@ const p1: Person = {
   age: 23
 };
 ```
+Type vs Object Type vs Interface
+| Feature              | `object` type           | `type`               | `interface`                |
+| -------------------- | ----------------------- | -------------------- | -------------------------- |
+| What it is           | Generic object type     | Type alias           | Object structure blueprint |
+| Used for             | Any non-primitive value | Alias for any type   | Defining object shape      |
+| Syntax               | `let x: object`         | `type User = {}`     | `interface User {}`        |
+| Supports primitives  | ❌ No                    | ✅ Yes                | ❌ No                       |
+| Supports union types | ❌ No                    | ✅ Yes                | ❌ No                       |
+| Extend / inherit     | ❌ No                    | ✅ (intersection `&`) | ✅ (`extends`)              |
+| Re-open / merge      | ❌ No                    | ❌ No                 | ✅ Yes                      |
+| Best for objects     | ❌ Weak                  | ✅ Yes                | ✅ Best                     |
+| Used in React        | ❌ Rare                  | ✅ Yes                | ✅ Very common              |
+
+object type
+```ts
+let data: object;
+data = { name: "Najmul" };
+data = [];   // valid
+data = () => {}; // valid
+```
+
+⚠️ No property safety.
+```ts
+type
+type User = {
+  name: string;
+  age: number;
+};
+
+type ID = string | number;
+```
+
+✔ Flexible & powerful.
+
+interface
+```ts
+interface User {
+  name: string;
+  age: number;
+}
+```
+
+✔ Clean & extendable.
+
+*** Use interface for objects, type for flexibility, avoid plain object.
+
 9️⃣ Union Types
 ```ts
 let id: number | string;
