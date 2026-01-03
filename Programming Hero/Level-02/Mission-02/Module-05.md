@@ -264,6 +264,74 @@ interface User {
 
 *** Use interface for objects, type for flexibility, avoid plain object.
 
+# 🔹 Rest & Spread Operator in TypeScript
+
+Same syntax (...) but different meanings depending on usage.
+
+## 1️⃣ Rest Operator (...)
+
+👉 Collects multiple values into one
+
+🔸 In Function Parameters
+```ts
+function sum(...numbers: number[]): number {
+  return numbers.reduce((a, b) => a + b, 0);
+}
+
+sum(1, 2, 3, 4); // 10
+```
+
+✔ Converts many arguments → array
+
+### 🔸 In Destructuring
+```ts
+const colors = ["red", "green", "blue", "yellow"];
+
+const [first, second, ...others] = colors;
+
+console.log(others); // ["blue", "yellow"]
+```
+## 2️⃣ Spread Operator (...)
+
+👉 Expands values
+
+🔸 Spread with Arrays
+```ts
+const a = [1, 2, 3];
+const b = [...a, 4, 5];
+
+console.log(b); // [1,2,3,4,5]
+```
+🔸 Spread with Objects
+```ts
+const user = { name: "Najmul", age: 22 };
+
+const updatedUser = { ...user, age: 23 };
+
+console.log(updatedUser);
+```
+
+✔ Used heavily in React state updates
+
+🔸 Spread in Function Call
+```ts
+const nums = [5, 10, 15];
+
+function add(a: number, b: number, c: number) {
+  return a + b + c;
+}
+
+add(...nums);
+```
+# 🔁 Rest vs Spread (Quick Difference)
+
+| Feature  | Rest            | Spread            |
+| -------- | --------------- | ----------------- |
+| Meaning  | Collect         | Expand            |
+| Position | Left side       | Right side        |
+| Use case | Function params | Copy / merge      |
+| Output   | Array           | Individual values |
+
 9️⃣ Union Types
 ```ts
 let id: number | string;
