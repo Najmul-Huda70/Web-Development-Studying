@@ -481,4 +481,132 @@ type Api = {
 
 api.fetchData?.();
 ```
+
+## 🔹 Nullable, unknown, & never in TypeScript
+### 1️⃣ Nullable Types (null & undefined)
+
+👉 Used when a value may not exist
+
+Example
+```ts
+let username: string | null = null;
+let token: string | undefined;
+```
+
+With strict checks:
+```ts
+function greet(name: string | null) {
+  if (name === null) {
+    console.log("Hello Guest");
+  } else {
+    console.log("Hello " + name);
+  }
+}
+```
+🔸 Optional Properties (Common Use)
+```ts
+interface User {
+  name: string;
+  age?: number; // age: number | undefined
+}
+```
+### 2️⃣ unknown Type
+
+👉 Safer alternative to any
+
+Difference from any
+
+any	unknown
+
+No type checking	Type checking required
+
+Unsafe	Safe
+
+Can call anything	Must narrow first
+
+Example
+```ts
+let data: unknown;
+
+data = "Hello";
+data = 10;
+```
+
+❌ Error:
+
+data.toUpperCase(); // ❌
+
+
+✔ Correct:
+```ts
+if (typeof data === "string") {
+  console.log(data.toUpperCase());
+}
+```
+Use Case
+
+API responses
+
+User input
+
+JSON parsing
+```ts
+function parse(value: unknown) {
+  if (typeof value === "number") {
+    return value * 2;
+  }
+  return null;
+}
+```
+### 3️⃣ never Type
+
+👉 Represents values that NEVER happen
+
+Used when:
+
+Function never returns
+
+Code is unreachable
+
+Example:
+```ts
+Function that never returns
+function throwError(msg: string): never {
+  throw new Error(msg);
+}
+
+Example: Infinite loop
+function infinite(): never {
+  while (true) {}
+}
+```
+### 🔸 Exhaustive Checking (Advanced ⭐)
+```ts
+type Shape =
+  | { kind: "circle"; radius: number }
+  | { kind: "square"; size: number };
+
+function area(shape: Shape) {
+  switch (shape.kind) {
+    case "circle":
+      return Math.PI * shape.radius ** 2;
+    case "square":
+      return shape.size ** 2;
+    default:
+      const _exhaustive: never = shape;
+      return _exhaustive;
+  }
+}
+```
+
+✔ Compiler error if a case is missing
+
+🔁 Comparison Table
+
+| Type| Purpose              | Safety    |
+| -------- | -------------------- | --------- |
+| Nullable | Value may be missing | Medium    |
+| unknown  | Unknown input        | High      |
+| never    | Impossible value     | Very High |
+
 </details>
