@@ -73,7 +73,15 @@ Created a new tsconfig.json
 ```bash
 tsc --init
 ```
-
+then terminal run 
+```ts
+tsc
+```
+created output directory folder 'dist'
+then code run 
+```ts
+node ./src/fileName.ts
+```
 </details>
 
 <details>
