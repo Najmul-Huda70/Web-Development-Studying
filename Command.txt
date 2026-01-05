@@ -14,3 +14,10 @@ git push -u origin main
 git remote add origin https://github.com/Najmul-Huda70/Level---01.git
 git branch -M main
 git push -u origin main
+
+
+git pull origin main --rebase
+git add .
+git rebase --continue
+git push -u origin main
+
