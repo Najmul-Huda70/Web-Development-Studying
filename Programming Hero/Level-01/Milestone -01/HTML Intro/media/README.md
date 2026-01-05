@@ -1,4 +1,4 @@
-# 1. <header>
+# 1.`html <header>`
 
 Purpose: Represents the introductory content of a page or a section. Often contains logo, navigation, headings, or introductory info.
 
@@ -17,7 +17,7 @@ Can be used multiple times (for the whole page or for sections/articles).
 
 Usually at the top of the page or section.
 
-# 2. <nav>
+# 2. `html<nav>`
 
 Purpose: Defines a navigation block containing links to other pages or sections.
 
@@ -37,7 +37,7 @@ Notes:
 
 Should only be used for major navigational links, not every single link on the page.
 
-# 3. <main>
+# 3. `html<main>`
 
 Purpose: Represents the main content of the document. There should be only one <main> per page.
 
@@ -56,7 +56,7 @@ Helps screen readers quickly jump to the main content.
 
 Should not include sidebars, navigation, headers, or footers.
 
-# 4. <section>
+# 4. `html<section>`
 
 Purpose: Represents a thematic grouping of content. Often has a heading.
 
@@ -75,7 +75,7 @@ Think of it as a chapter in a book.
 
 Can contain multiple <article> or other elements.
 
-# 5. <article>
+# 5. `html<article>`
 
 Purpose: Represents independent, self-contained content that could be distributed separately (like blog posts or news articles).
 
@@ -94,7 +94,7 @@ Can be inside <section> or directly in <main>.
 
 Should make sense on its own.
 
-# 6. <footer>
+# 6. `html<footer>`
 
 Purpose: Defines a footer for a page or section, typically containing author info, copyright, or links.
 
